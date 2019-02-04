@@ -45,9 +45,9 @@ function test {
     echo "Running tests with cache (use --cache-clear otherwise)..."
     cd /code/server/
     if [ $# -eq 0 ]; then
-        DJANGO_SETTINGS_MODULE=django-react-docker-heroku.settings pytest --pylama tests/
+        DJANGO_SETTINGS_MODULE=oak-bike.settings pytest --pylama tests/
     else
-        DJANGO_SETTINGS_MODULE=django-react-docker-heroku.settings pytest --pylama "$@"
+        DJANGO_SETTINGS_MODULE=oak-bike.settings pytest --pylama "$@"
     fi
 }
 

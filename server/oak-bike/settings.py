@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # Our apps
-    'django-react-docker-heroku',
+    'oak-bike',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'django-react-docker-heroku.urls'
+ROOT_URLCONF = 'oak-bike.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django-react-docker-heroku.wsgi.application'
+WSGI_APPLICATION = 'oak-bike.wsgi.application'
 
 
 # Database
@@ -136,7 +136,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Graphene
 
 GRAPHENE = {
-    'SCHEMA': 'django-react-docker-heroku.schema.schema',  # Where your Graphene schema lives
+    'SCHEMA': 'oak-bike.schema.schema',  # Where your Graphene schema lives
     'RELAY_CONNECTION_MAX_LIMIT': 50,
 }
 

@@ -27,46 +27,46 @@ case $task in
         ;;
     clean)
         # Remove docker containers (if they exist)
-        if docker inspect django-react-docker-heroku-db > /dev/null 2> /dev/null; then
-            docker rm -f django-react-docker-heroku-db
+        if docker inspect oak-bike-db > /dev/null 2> /dev/null; then
+            docker rm -f oak-bike-db
         fi
-        if docker inspect django-react-docker-heroku-db-test > /dev/null 2> /dev/null; then
-            docker rm -f django-react-docker-heroku-db-test
+        if docker inspect oak-bike-db-test > /dev/null 2> /dev/null; then
+            docker rm -f oak-bike-db-test
         fi
-        if docker inspect django-react-docker-heroku > /dev/null 2> /dev/null; then
-            docker rm -f django-react-docker-heroku
+        if docker inspect oak-bike > /dev/null 2> /dev/null; then
+            docker rm -f oak-bike
         fi
-        if docker image inspect django-react-docker-heroku-db > /dev/null 2> /dev/null; then
-            docker rmi django-react-docker-heroku-db
+        if docker image inspect oak-bike-db > /dev/null 2> /dev/null; then
+            docker rmi oak-bike-db
         fi
-        if docker image inspect django-react-docker-heroku > /dev/null 2> /dev/null; then
-            docker rmi django-react-docker-heroku
+        if docker image inspect oak-bike > /dev/null 2> /dev/null; then
+            docker rmi oak-bike
         fi
         ;;
     bash)
         # SSH (bash) into server container.
         # Useful for running Django shell commands.
-        docker exec -it django-react-docker-heroku bash
+        docker exec -it oak-bike bash
         ;;
     bashdb)
         # SSH (bash) into database container.
         # Useful for running commands directly against database.
-        docker exec -it django-react-docker-heroku-db bash
+        docker exec -it oak-bike-db bash
         ;;
     shell)
         # SSH (bash) into server container.
         # Useful for running Django shell commands.
-        docker exec -it django-react-docker-heroku python manage.py shell
+        docker exec -it oak-bike python manage.py shell
         ;;
     lint)
         # Lint server code automatically with autopep8.
         # WARNING: This updates files in-place.
-        docker exec -it django-react-docker-heroku autopep8 . --in-place --recursive --global-config setup.cfg
+        docker exec -it oak-bike autopep8 . --in-place --recursive --global-config setup.cfg
         ;;
     dbshell)
         # SSH (bash) into database container.
         # Useful for running postgres commands.
-        docker exec -it django-react-docker-heroku-db psql -U postgres
+        docker exec -it oak-bike-db psql -U postgres
         ;;
     cleandb)
         # Drop the local database.
@@ -75,37 +75,37 @@ case $task in
         ;;
     migrate)
         # Run database migrations.
-        docker exec -it django-react-docker-heroku python manage.py migrate $args
+        docker exec -it oak-bike python manage.py migrate $args
         ;;
     test)
         # Run the tests against a test database, from a test container.
         # Useful for running Django shell commands.
-        if ! docker inspect django-react-docker-heroku-db-test > /dev/null 2> /dev/null; then
+        if ! docker inspect oak-bike-db-test > /dev/null 2> /dev/null; then
              docker run \
                 --detach \
-                --name django-react-docker-heroku-db-test \
+                --name oak-bike-db-test \
                 --env-file=.env \
                 postgres
         fi
 
-        docker start django-react-docker-heroku-db-test > /dev/null
+        docker start oak-bike-db-test > /dev/null
 
         # in a while loop wait for the db test container to really start
-        until docker exec -it django-react-docker-heroku-db-test psql -U postgres -c '\q' > /dev/null 2> /dev/null; do
+        until docker exec -it oak-bike-db-test psql -U postgres -c '\q' > /dev/null 2> /dev/null; do
             sleep 0.5
         done
 
-        docker exec -it django-react-docker-heroku-db-test psql -U postgres -c "DROP DATABASE IF EXISTS django_react_docker_heroku"
-        docker exec -it django-react-docker-heroku-db-test psql -U postgres -c "CREATE DATABASE django_react_docker_heroku"
+        docker exec -it oak-bike-db-test psql -U postgres -c "DROP DATABASE IF EXISTS django_react_docker_heroku"
+        docker exec -it oak-bike-db-test psql -U postgres -c "CREATE DATABASE django_react_docker_heroku"
 
         docker run \
             -it --rm \
-            --name django-react-docker-heroku-test \
-            --link django-react-docker-heroku-db-test:db \
+            --name oak-bike-test \
+            --link oak-bike-db-test:db \
             -v $(pwd):/code:rw \
             --env-file=.env \
             -e IS_TESTING=true \
-            django-react-docker-heroku \
+            oak-bike \
             test $args
         ;;
     '')

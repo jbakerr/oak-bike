@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath server django-react-docker-heroku.wsgi --log-file -
+web: gunicorn --pythonpath server oak-bike.wsgi --log-file -

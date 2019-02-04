@@ -2,14 +2,14 @@ version: '3'
 services:
   db:
     image: postgres
-    container_name: django-react-docker-heroku-db
-  django-react-docker-heroku:
+    container_name: oak-bike-db
+  oak-bike:
     build:
       context: .
       dockerfile: ./docker/Docker.server/Dockerfile
-    image: django-react-docker-heroku
+    image: oak-bike
     env_file: .env
-    container_name: django-react-docker-heroku
+    container_name: oak-bike
     volumes:
       - .:/code
     ports:

@@ -2,8 +2,8 @@
 
 NAME="app-wsgi"                         # Name of the application
 DJANGODIR=/code/server                  # Django project directory
-WSGI_MODULE=django-react-docker-heroku.wsgi:application    # Django WSGI module
-DJANGO_SETTINGS_MODULE=django-react-docker-heroku.settings # Django settings
+WSGI_MODULE=oak-bike.wsgi:application    # Django WSGI module
+DJANGO_SETTINGS_MODULE=oak-bike.settings # Django settings
 SOCKFILE=/tmp/gunicorn.sock             # we will communicate using this unix socket
 LOGFILE=/var/log/gunicorn/access.log    # WSGI log here
 USER=app                                # the user to run as
