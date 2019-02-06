@@ -1,9 +1,11 @@
 import ApolloClient from "apollo-boost";
 import React from "react";
 import { ApolloProvider } from "react-apollo";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import PostListView from "./views/PostList/index";
+import PageHome from "./components/PageHome";
+import PageReport from './components/PageReport';
+import Page404 from './components/Page404';
 
 const client = new ApolloClient({
   uri:
@@ -16,9 +18,11 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <Route exact path="/" component={PostListView} />
-        </div>
+        <Switch>
+          <Route exact path="/" component={PageHome} />
+          <Route path="/report" component={PageReport} />
+          <Route path="/*" component={Page404} />
+        </Switch>
       </Router>
     </ApolloProvider>
   );
