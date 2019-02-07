@@ -30,4 +30,9 @@ heroku config:set SECRET_KEY='123'
 git push heroku master
 ```
 
+# Authors
+* Travis Eden
+* Manish Sinha
+* Nikul Shah
+
 
