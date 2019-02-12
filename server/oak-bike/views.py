@@ -28,7 +28,6 @@ class FrontendAppView(View):
                 status=501,
 )
 
-
 class GraphQLView(BaseGraphQLView):
     def dispatch(self, request, *args, **kwargs):
         if request.method.lower() not in ('get', 'post', 'options'):
@@ -43,3 +42,22 @@ class GraphQLView(BaseGraphQLView):
             )
 
         return super().dispatch(request, *args, **kwargs)
+
+class LogView(View):
+
+    # def post(self, request):
+    #     print(json.dumps(request.POST, indent=4, sort_keys=True))
+    #     return HttpResponse(
+    #         status=200,
+    #         content='yelloooo',
+    #         content_type='application/json'
+    #     )
+
+    def get(self, request):
+        print(request.GET)
+        return HttpResponse(
+            status=200,
+            content='yelloooo',
+            content_type='text/html'
+        )
+

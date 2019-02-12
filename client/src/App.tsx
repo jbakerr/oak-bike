@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageHome from "./components/PageHome";
 import PageReport from './components/PageReport';
 import Page404 from './components/Page404';
+import OakMap from './components/Map';
 
 const client = new ApolloClient({
   uri:
@@ -21,6 +22,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={PageHome} />
           <Route path="/report" component={PageReport} />
+          <Route path="/map" component={OakMap} />
           <Route path="/*" component={Page404} />
         </Switch>
       </Router>
