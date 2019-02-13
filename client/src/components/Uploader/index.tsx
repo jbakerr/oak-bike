@@ -1,7 +1,7 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 
-const maxHeightOrWidth = 300;
+const maxSize = 300;
 
 // interface HTMLCanvasElement {
 //   getContext(contextId: '2d'): CanvasRenderingContext2D;
@@ -39,18 +39,18 @@ class Uploader extends React.Component<{}, UploaderState> {
         let height = img.height;
         console.log("width:", width);
         console.log("height:", height);
-        console.log("maxHeightOrWidth:", maxHeightOrWidth);
-        if (width < maxHeightOrWidth && height < maxHeightOrWidth) {
+        console.log("maxSize:", maxSize);
+        if (width < maxSize && height < maxSize) {
           console.log("image already good:", image);
           this.setState({ image });
           return;
         }
         if (width > height) {
-          height *= maxHeightOrWidth / width;
-          width = maxHeightOrWidth;
+          height *= maxSize / width;
+          width = maxSize;
         } else {
-          width *= maxHeightOrWidth / height;
-          height = maxHeightOrWidth;
+          width *= maxSize / height;
+          height = maxSize;
         }
         elem.width = width;
         elem.height = height;
