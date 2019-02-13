@@ -4,10 +4,7 @@ import { Link } from 'react-router-dom'
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-import Carousel from "nuka-carousel";
-
 const PageHome = () => (
-  // <p>hi</p>
   // <Query
   //   query={gql`
   //     {
