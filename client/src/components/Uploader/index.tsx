@@ -1,7 +1,7 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 
-const maxSize = 300;
+const maxSize = 1300;
 
 // interface HTMLCanvasElement {
 //   getContext(contextId: '2d'): CanvasRenderingContext2D;
@@ -52,6 +52,8 @@ class Uploader extends React.Component<{}, UploaderState> {
           width *= maxSize / height;
           height = maxSize;
         }
+        console.log("width:", width);
+        console.log("height:", height);
         elem.width = width;
         elem.height = height;
         const ctx: any = elem.getContext('2d');
@@ -67,7 +69,7 @@ class Uploader extends React.Component<{}, UploaderState> {
           );
           console.log("newImage:", newImage);
           this.setState({ image: newImage });
-        }, 'image/jpeg', 1);
+        }, 'image/jpeg');
       }
     }
   }
