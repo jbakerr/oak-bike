@@ -70,8 +70,8 @@ case $task in
         ;;
     cleandb)
         # Drop the local database.
-        docker exec -it db psql -U postgres django_react_docker_heroku -c
-        docker exec -it db psql -h db -U postgres -c "DROP DATABASE IF EXISTS django_react_docker_heroku"
+        docker exec -it db psql -U postgres uplift -c
+        docker exec -it db psql -h db -U postgres -c "DROP DATABASE IF EXISTS uplift"
         ;;
     migrate)
         # Run database migrations.
@@ -95,8 +95,8 @@ case $task in
             sleep 0.5
         done
 
-        docker exec -it oak-bike-db-test psql -U postgres -c "DROP DATABASE IF EXISTS django_react_docker_heroku"
-        docker exec -it oak-bike-db-test psql -U postgres -c "CREATE DATABASE django_react_docker_heroku"
+        docker exec -it oak-bike-db-test psql -U postgres -c "DROP DATABASE IF EXISTS uplift"
+        docker exec -it oak-bike-db-test psql -U postgres -c "CREATE DATABASE uplift"
 
         docker run \
             -it --rm \

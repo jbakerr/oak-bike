@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     # Our apps
-    'oak-bike',
+    'oakbike',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'oak-bike.urls'
+ROOT_URLCONF = 'oakbike.urls'
 
 TEMPLATES = [
     {
@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'oak-bike.wsgi.application'
+WSGI_APPLICATION = 'oakbike.wsgi.application'
 
 
 # Database
@@ -136,7 +136,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Graphene
 
 GRAPHENE = {
-    'SCHEMA': 'oak-bike.schema.schema',  # Where your Graphene schema lives
+    'SCHEMA': 'oakbike.schema.schema',  # Where your Graphene schema lives
     'RELAY_CONNECTION_MAX_LIMIT': 50,
 }
 
