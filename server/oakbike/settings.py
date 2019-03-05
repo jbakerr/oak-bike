@@ -20,9 +20,13 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = []
+"""
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
 )
+"""
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 
 # Application definition
